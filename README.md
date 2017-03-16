@@ -1,4 +1,4 @@
-# angular控制器，模块，指令学习
+# angular控制器，模块，指令，过滤器，服务
 ## 什么是AngularJS？
 > AngularJS是一个javaScript框架，可通过 script 标签添加到网页中
 它通过指令扩展了HTML，且通过表达式绑定数据到页面。
