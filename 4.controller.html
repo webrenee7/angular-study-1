@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="parentCtrl">
+    {{age}}<!--子能访问父，父不能访问子  所以这里不能输出内容-->
+    <div ng-controller="childCtrl">
+        {{name}}
+    </div>
+</div>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    //一切从模块开始
+    var app=angular.module('appModule',[]);
+    /*
+    * 控制器的特点：
+    * 1.定义一个控制器，就产生一个作用域，自带$scope参数（这个参数名是固定的不能变），表示当前作用域
+    * 2.子能访问父，父不能访问子
+    * 3.控制器和DOM是平行的
+    * 4.不要在控制器中操作dom,能不操作dom就不要操作dom
+    * 5.可以嵌套
+    * */
+    app.controller('parentCtrl',function ($rootScope,$scope) {//$rootScope是根作用域,$scope是当前作用域
+        $rootScope.a=1;
+        $scope.name="xy";
+    });
+    app.controller('childCtrl',function ($rootScope,$scope) {
+        $rootScope.a=2;//会覆盖之前根作用域的变量
+        $scope.age="123";
+    })
+</script>
+</body>
+</html>

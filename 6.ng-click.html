@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="myCtrl">
+<!--
+$event是函数的参数，固定写法，表示当前对象
+-->
+<button ng-click="fn($event)">中国</button>
+<button ng-click="fn($event)">美国</button>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    app.controller('myCtrl',['$scope',function ($scope) {
+        $scope.fn=function (e) {
+            alert(e.target.innerHTML);
+        }
+    }]);
+</script>
+</body>
+</html>

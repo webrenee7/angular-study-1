@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<app-dir a="{{age}}"></app-dir>-->
+<app-dir a="age"></app-dir>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    app.run(function ($rootScope) {
+        $rootScope.age=123;
+    });
+    app.directive('appDir',function () {
+        return {
+            replace:true,
+            template:'<div>{{age+3}}</div>',
+            scope:{
+//                age:"@age",//传递的是字符串
+                age:'=a'//传递的是变量
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<app-dir></app-dir>
+<div app-dir></div>
+<div class="app-dir"></div>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    app.directive('appDir',function(){
+        return {
+            replace:true,
+            restrict:'EAMC',
+            template:"<div>我是一个模板</div>",
+            //link函数：用来链接作用域和DOM视图，在插入指令时执行
+            link:function (scope,element,attrs) {
+                //scope  当前指令所在作用域
+                //element  当前指令所在元素  是个JQ对象
+                //attrs  当前指令所在元素的属性集合
+//                console.log(element);
+            }
+        }
+    });
+</script>
+</body>
+</html>

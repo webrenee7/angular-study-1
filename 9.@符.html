@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<app-dir n="{{name}}" a="{{age}}" s="{{sex}}"></app-dir>
+<app-dir a="{{age}}"></app-dir>
+<app-dir sex="{{sex}}"></app-dir>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    //angular初始化完成后就有$rootScope,可以在这里声明全局变量
+    app.run(function ($rootScope) {
+        $rootScope.name='xy';
+        $rootScope.age=123;
+        $rootScope.sex="女";
+    });
+    //指令默认不产生作用域，只有设置了scope值为true/{}才产生
+    app.directive('appDir',function () {
+        return {
+            replace:true,
+            template:'<div>{{name}}{{age}}{{sex}}</div>',
+//            scope:true,//产生独立的作用域，可以继承父级的属性
+            scope:{//产生独立的作用域，与父级断绝关系
+                //也就是说写一个指令，就产生一个独立的作用域
+                //如果要使用父级的变量，需要一个中间人，这个中间人可以是"@" "=" "&"这三个符号
+                name:"@n",
+                age:"@a",
+                sex:"@"//@传递的是字符串类型的，如果@后面和scope属性名一样，可以省略不写
+            }
+        }
+    });
+</script>
+</body>
+</html>

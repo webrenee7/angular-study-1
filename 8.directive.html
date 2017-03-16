@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--指令的四种使用方法-->
+标签：<app-dir>标签形式展现</app-dir>
+属性：<div app-dir>属性形式展现</div>
+注释：<!-- directive:app-dir --><!--注释前后必须有空格，否则不显示-->
+样式名：<div class="app-dir">样式名形式展现</div>
+<script rel="stylesheet" src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    //指令名称如果是驼峰式命名，使用时先转化为小写，然后在第二个单词前面加"-"
+    app.directive('appDir',function () {
+        return {
+            replace:true,//是否替换掉指令所在容器本身，默认不替换，当值为true时，模板的顶级元素只能有一个
+            template:'<div><b ng-transclude></b>我是指令</div>',//指令模板
+//            templateUrl:'panel.html',//使用模板地址
+            restrict:'EAMC',//==>element attribute  comment  class 指令的显示形式，默认显示EA
+            transclude:true//保留指令容器里面的内容，并且通过ng-transclude显示位置
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="myCtrl">
+<!--
+    ng-repeat:遍历对象或数组
+        方法一：ng-repeat="(key,value) in obj"
+        方法二：ng-repeat="key in obj"
+        ng-repeat="key in obj track by $index"
+        track by $index：解决重复数据遍历的错误
+        注意：
+            1>.用ng-repeat指令遍历一个javascript数组，当数组中有重复元素的时候,angularjs会报错,这是因为ng-Repeat不允许collection中存在两个相同Id的对象。
+            2>.如果是javascript对象类型数据，那么就算内容一摸一样，ng-repeat也不会认为这是相同的对象。
+
+        {{odd}} 奇数项
+        {{even}} 偶数项
+        {{first}} 是否是第一项
+        {{last}} 是否是最后一项
+        {{middle}} 是否是中间项
+-->
+<ul>
+    <li ng-repeat="value in arr track by $index">
+        {{value}}
+    </li>
+</ul>
+<ul>
+    <li ng-repeat="(key,book) in books track by $index">
+        {{key}}  {{book.name}}
+        {{key}}  {{book.price}}
+    </li>
+</ul>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    /*为了防止js压缩，第二个参数要写成数组形式*/
+    app.controller('myCtrl',['$scope',function ($scope) {
+        $scope.arr=[1,1,3,4];
+        $scope.books=[
+            {name:'angular教程',price:30,id:1},
+            {name:'node教程',price:60,id:2},
+            {name:'vue教程',price:50,id:3}
+        ];
+    }]);
+</script>
+</body>
+</html>

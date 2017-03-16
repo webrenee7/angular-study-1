@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--启动angular应用程序，并且加载appModel这个模块-->
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+<script>
+    //第一个参数：模块名称
+    //第二个参数：模块依赖列表，如果没有，则为空数组
+    var app=angular.module('appModule',[]);
+    console.log(app);
+    /*
+   输出一个对象,包括：
+    一个属性：name  -->模块名称
+    常用方法：
+        controller
+        run
+        filter
+        config
+        directive
+        provider
+        factory
+        service
+        value
+    * */
+</script>
+</body>
+</html>

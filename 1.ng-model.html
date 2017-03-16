@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--ng-app：指定angular应用程序的控制范围,产生$rootScope根作用域-->
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+ng-model:将表单元素的值绑定给ng-model的变量name,只能作用域表单元素（input,textarea,select,checkbox,radio..）
+如果当前作用域没有name 变量 则声明一个 如果有并把值取出来给input
+-->
+<input type="text" ng-model="name">
+{{name}}
+<!--
+{{}}：双花括号表示双向数据绑定
+花括号支持的表达式：
+1.赋值运算 {{name=1}}
+2.简单运算 {{2*3}}
+3.三元运算 {{name?name:'没有值'}}
+-->
+<script src="../node_modules/angular/angular.js"></script>
+</body>
+</html>

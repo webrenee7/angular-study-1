@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<app-dir c="count1" fn="say(count1)"></app-dir>
+<app-dir c="count2" fn="say(count2)"></app-dir>
+<app-dir c="count3" fn="say(count3)"></app-dir>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    app.run(function ($rootScope) {
+        $rootScope.count1=1;
+        $rootScope.count2=2;
+        $rootScope.count3=3;
+        $rootScope.say=function (count) {
+            alert(count);
+        }
+    });
+    app.directive('appDir',function () {
+        return {
+            replace:true,
+            transclude:true,
+            template:'<button ng-click="say({count:count})">{{count}}</button>',
+            scope:{
+                count:'=c',
+                say:'&fn'//&传递的是函数,传参时，需要以对象形式(key:value)为组件设置形参
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{ background: red; color: #fff;}
+        .bg1{ background: black;}
+        .bg2{ background: purple;}
+        .bg3{ background: lightgreen;}
+        .size{ font-size: 60px;}
+    </style>
+</head>
+<body ng-controller="myCtrl">
+<!--1、根据flag判断用哪个class-->
+<!--class 和ng-class不冲突 动态的永远比静态的优先级高-->
+<div class="red" ng-class="{true:'bg1',false:'bg2'}[flag]">根据flag判断用哪个class</div>
+
+<!--2、根据属性值判断是否生效-->
+<!--ng-style比ng-class优先级高-->
+<div class="red" ng-class="{bg3:true,size:true}" ng-style="{background:'lightblue',fontSize:'100px'}">根据属性值判断是否生效</div>
+
+<script rel="stylesheet" src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    app.controller('myCtrl',['$scope',function ($scope) {
+        $scope.flag=true;
+    }]);
+</script>
+</body>
+</html>

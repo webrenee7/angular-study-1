@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [ng-cloak]{ display: none;}
+    </style>
+</head>
+<body ng-cloak>
+<input type="text" ng-model="name">
+<!--<input type="text" ng-model="user">-->
+<!--
+绑定数据的两种方式：
+1.花括号方式：用户会看到之前的内容
+2.ng-bind：用户不会看到之前的内容，但是会覆盖之前的内容
+===>使用花括号方式，在body中加ng-cloak属性，并且默认隐藏，来取消闪烁效果
+-->
+{{name}}
+<!--ng-bind只能绑定一个-->
+<!--<div ng-bind="name">123</div>-->
+<!--ng-bind-template能够绑定多个-->
+<!--<div ng-bind-template="{{name}}{{user}}">123</div>-->
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+</script>
+</body>
+</html>
